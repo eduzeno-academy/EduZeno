@@ -27,6 +27,25 @@
             const menu = document.getElementById('mobile-menu');
             menu.classList.toggle('hidden');
         }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const links = document.querySelectorAll('a[href^="#"]');
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const targetId = this.getAttribute('href');
+                    if(targetId === '#') return;
+                    const targetElement = document.querySelector(targetId);
+                    if(targetElement) {
+                        e.preventDefault();
+                        targetElement.scrollIntoView({ behavior: 'smooth' });
+                        const mobileMenu = document.getElementById('mobile-menu');
+                        if(mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                            mobileMenu.classList.add('hidden');
+                        }
+                    }
+                });
+            });
+        });
     </script>
 </head>
 <body class="bg-slate-50 font-sans text-slate-800">
@@ -78,14 +97,14 @@
 
         <!-- Mobile Dropdown Menu -->
         <div id="mobile-menu" class="hidden lg:hidden bg-blue-950 border-t border-blue-800 px-4 py-4 space-y-3 text-sm font-medium">
-            <a href="#home" onclick="toggleMobileMenu()" class="block hover:text-amber-400 transition">Home</a>
-            <a href="#grades" onclick="toggleMobileMenu()" class="block hover:text-amber-400 transition">Grades (5-12)</a>
-            <a href="#subjects" onclick="toggleMobileMenu()" class="block hover:text-amber-400 transition">Subjects</a>
-            <a href="#instructor" onclick="toggleMobileMenu()" class="block hover:text-amber-400 transition">Instructor</a>
-            <a href="#material" onclick="toggleMobileMenu()" class="block hover:text-amber-400 transition text-amber-300 font-semibold">Study Material Access</a>
-            <a href="#faq" onclick="toggleMobileMenu()" class="block hover:text-amber-400 transition">FAQ</a>
-            <a href="#feedback" onclick="toggleMobileMenu()" class="block hover:text-amber-400 transition">Reviews</a>
-            <a href="#register" onclick="toggleMobileMenu()" class="block text-amber-400 font-bold transition">Enroll Now</a>
+            <a href="#home" class="block hover:text-amber-400 transition">Home</a>
+            <a href="#grades" class="block hover:text-amber-400 transition">Grades (5-12)</a>
+            <a href="#subjects" class="block hover:text-amber-400 transition">Subjects</a>
+            <a href="#instructor" class="block hover:text-amber-400 transition">Instructor</a>
+            <a href="#material" class="block hover:text-amber-400 transition text-amber-300 font-semibold">Study Material Access</a>
+            <a href="#faq" class="block hover:text-amber-400 transition">FAQ</a>
+            <a href="#feedback" class="block hover:text-amber-400 transition">Reviews</a>
+            <a href="#register" class="block text-amber-400 font-bold transition">Enroll Now</a>
         </div>
     </nav>
 
@@ -494,11 +513,22 @@
                 <img src="https://i.postimg.cc/gjDKQNL3/Whats-App-Image-2026-08-09-at-1-20-24-PM.jpg" alt="EduZeno Logo" class="h-10 w-10 rounded-full object-cover border border-amber-400">
                 <span class="text-xl font-bold text-amber-400">EduZeno Academy</span>
             </div>
-            <p class="text-xs text-slate-400 max-w-md mx-auto">Empowering students from Grade 5 to Grade 12 with concept-driven online education and expert mentorship.</p>
-            <div class="flex justify-center space-x-4 text-lg">
+            <p class="text-xs text-amber-300 font-semibold">Learn with Excellence. Lead with Confidence.</p>
+            <p class="text-xs text-slate-400 max-w-md mx-auto">Empowering Students Worldwide - Grades 5 to 12 with concept-driven online education and expert mentorship.</p>
+            
+            <div class="text-xs text-slate-300 pt-1">
+                Official Email: <a href="mailto:infoeduzeno@gmail.com" class="text-amber-400 font-semibold hover:underline">infoeduzeno@gmail.com</a>
+            </div>
+
+            <div class="flex justify-center space-x-4 text-lg pt-2">
                 <a href="https://whatsapp.com/channel/0029VbDRvi9Id7nE9dPlaF2V" target="_blank" class="text-green-400 hover:text-green-300 transition" title="WhatsApp Channel"><i class="fa-brands fa-whatsapp"></i></a>
                 <a href="mailto:infoeduzeno@gmail.com" class="text-amber-400 hover:text-amber-300 transition" title="Email Us"><i class="fa-solid fa-envelope"></i></a>
             </div>
+
+            <div class="pt-2">
+                <a href="privacy.html" class="text-xs text-amber-400 hover:underline font-semibold">Privacy Policy</a>
+            </div>
+
             <div class="text-xs text-slate-500 pt-4 border-t border-blue-900/50">
                 &copy; 2026 EduZeno Online Learning Platform. All rights reserved.
             </div>
