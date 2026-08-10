@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduZeno - Online Learning Platform (Grades 5-12)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script>
+        function handleSubjectChange(select) {
+            const otherBox = document.getElementById('other-subject-div');
+            if (select.value === 'Other') {
+                otherBox.classList.remove('hidden');
+            } else {
+                otherBox.classList.add('hidden');
+            }
+        }
+        
+        function toggleFAQ(element) {
+            const answer = element.nextElementSibling;
+            const icon = element.querySelector('.faq-icon');
+            answer.classList.toggle('hidden');
+            icon.classList.toggle('rotate-180');
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+    </script>
+</head>
+<body class="bg-slate-50 font-sans text-slate-800">
+
+    <!-- NAVBAR -->
+    <nav class="bg-blue-900 text-white sticky top-0 z-50 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 py-2 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <img src="https://i.postimg.cc/gjDKQNL3/Whats-App-Image-2026-08-09-at-1-20-24-PM.jpg" alt="EduZeno Logo" class="h-12 w-12 md:h-14 md:w-14 rounded-full object-cover border-2 border-amber-400 shadow-md">
+                <div>
+                    <span class="text-xl md:text-2xl font-extrabold tracking-wide text-amber-400 block leading-none">EduZeno</span>
+                    <span class="text-[11px] md:text-[13px] text-amber-300 font-semibold tracking-wider block mt-0.5">Online Learning Platform</span>
+                    <span class="text-[10px] md:text-[12px] text-amber-300 font-semibold tracking-wider block mt-0.5">Learn with Excellence.<br>Lead with Confidence.</span>
+                </div>
+            </div>
+
+            <!-- Desktop Links -->
+            <div class="hidden lg:flex space-x-6 text-sm font-medium items-center">
+                <a href="#home" class="text-amber-400 font-bold transition">Home</a>
+                <a href="#grades" class="hover:text-amber-400 transition">Grades (5-12)</a>
+                <a href="#subjects" class="hover:text-amber-400 transition">Subjects</a>
+                <a href="#instructor" class="hover:text-amber-400 transition">Instructor</a>
+                <a href="#material" class="hover:text-amber-400 transition flex items-center space-x-1">
+                    <i class="fa-solid fa-book-open-reader text-amber-400"></i>
+                    <span>Study Material</span>
+                </a>
+                <a href="#faq" class="hover:text-amber-400 transition">FAQ</a>
+                <a href="#feedback" class="hover:text-amber-400 transition">Reviews</a>
+                <a href="#register" class="hover:text-amber-400 transition">Enroll Now</a>
+                <a href="mailto:infoeduzeno@gmail.com" class="bg-amber-500 hover:bg-amber-600 text-blue-950 font-bold px-3 py-1.5 rounded-lg transition shadow-md flex items-center space-x-1.5 text-xs md:text-sm">
+                    <i class="fa-solid fa-envelope"></i>
+                    <span>Email Us</span>
+                </a>
+            </div>
+
+            <!-- Mobile Menu Button & Material Quick Icon -->
+            <div class="lg:hidden flex items-center space-x-2">
+                <a href="#material" class="bg-blue-800 text-amber-400 border border-amber-400/40 p-2 rounded-lg text-xs flex items-center justify-center" title="Study Material">
+                    <i class="fa-solid fa-book-open-reader text-sm"></i>
+                </a>
+                <a href="mailto:infoeduzeno@gmail.com" class="bg-amber-500 text-blue-950 font-bold p-2 rounded-lg text-xs flex items-center justify-center">
+                    <i class="fa-solid fa-envelope text-sm"></i>
+                </a>
+                <button onclick="toggleMobileMenu()" class="text-white text-2xl focus:outline-none p-1">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Dropdown Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-blue-950 border-t border-blue-800 px-4 py-4 space-y-3 text-sm font-medium">
+            <a href="#home" onclick="toggleMobileMenu()" class="block hover:text-amber-400 transition">Home</a>
+            <a href="#grades" onclick="toggleMobileMenu()" class="block hover:text-amber-400 transition">Grades (5-12)</a>
+            <a href="#subjects" onclick="toggleMobileMenu()" class="block hover:text-amber-400 transition">Subjects</a>
+            <a href="#instructor" onclick="toggleMobileMenu()" class="block hover:text-amber-400 transition">Instructor</a>
+            <a href="#material" onclick="toggleMobileMenu()" class="block hover:text-amber-400 transition text-amber-300 font-semibold">Study Material Access</a>
+            <a href="#faq" onclick="toggleMobileMenu()" class="block hover:text-amber-400 transition">FAQ</a>
+            <a href="#feedback" onclick="toggleMobileMenu()" class="block hover:text-amber-400 transition">Reviews</a>
+            <a href="#register" onclick="toggleMobileMenu()" class="block text-amber-400 font-bold transition">Enroll Now</a>
+        </div>
+    </nav>
+
+    <!-- FLOATING WHATSAPP CHANNEL BUTTON -->
+    <a href="https://whatsapp.com/channel/0029VbDRvi9Id7nE9dPlaF2V" target="_blank" class="fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl transition transform hover:scale-110" title="Join WhatsApp Channel">
+        <i class="fa-brands fa-whatsapp text-3xl"></i>
+    </a>
+
+    <!-- HERO SECTION -->
+    <section id="home" class="bg-gradient-to-r from-blue-900 via-indigo-900 to-blue-800 text-white py-12 px-4 text-center">
+        <div class="max-w-7xl mx-auto space-y-4">
+            <span class="bg-blue-700/50 text-amber-300 border border-amber-400/30 text-xs md:text-sm font-semibold px-4 py-1 rounded-full inline-block">
+                Welcome to EduZeno - Premier Online Learning Platform
+            </span>
+            <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight leading-tight text-white">
+                Empowering Minds from <span class="text-amber-400">Grade 5 to Grade 12</span>
+            </h1>
+            <p class="text-sm md:text-lg text-blue-100 max-w-2xl mx-auto">
+                EduZeno is a comprehensive online learning platform providing live interactive classes, conceptual learning, multi-curriculum preparation (Oxford, Dora & others), and expert mentorship.
+            </p>
+            <div class="flex flex-wrap justify-center gap-4 pt-2">
+                <a href="#register" class="bg-amber-500 hover:bg-amber-600 text-blue-950 text-sm md:text-base font-bold px-6 py-2.5 rounded-lg shadow-lg transition">
+                    Book Free Demo Class
+                </a>
+                <a href="https://whatsapp.com/channel/0029VbDRvi9Id7nE9dPlaF2V" target="_blank" class="bg-green-600 hover:bg-green-700 text-white text-sm md:text-base font-bold px-6 py-2.5 rounded-lg shadow-lg transition flex items-center space-x-2">
+                    <i class="fa-brands fa-whatsapp"></i>
+                    <span>Join WhatsApp Channel</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- TRUST STATS BAR -->
+    <section class="bg-white border-b border-slate-200 py-6">
+        <div class="max-w-7xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+            <div>
+                <div class="text-2xl md:text-3xl font-extrabold text-blue-900">100%</div>
+                <div class="text-xs md:text-sm text-slate-600 mt-1">Concept Clarity Focus</div>
+            </div>
+            <div>
+                <div class="text-2xl md:text-3xl font-extrabold text-blue-900">Grades 5-12</div>
+                <div class="text-xs md:text-sm text-slate-600 mt-1">Complete Academic Coverage</div>
+            </div>
+            <div>
+                <div class="text-2xl md:text-3xl font-extrabold text-blue-900">Multi-Syllabus</div>
+                <div class="text-xs md:text-sm text-slate-600 mt-1">Oxford, Dora & More</div>
+            </div>
+            <div>
+                <div class="text-2xl md:text-3xl font-extrabold text-blue-900">Expert Lead</div>
+                <div class="text-xs md:text-sm text-slate-600 mt-1">Personalized Attention</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GRADES SECTION -->
+    <section id="grades" class="py-12 max-w-7xl mx-auto px-4">
+        <div class="text-center mb-10">
+            <h2 class="text-2xl md:text-3xl font-bold text-blue-900">Grades & Programs (5 to 12)</h2>
+            <p class="text-slate-600 text-sm mt-1">Detailed breakdown of classes and multi-curriculum support</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="bg-white p-6 rounded-xl shadow-md border-t-4 border-amber-500">
+                <div class="text-amber-500 text-xl font-bold mb-2">Grade 5 & 6 (Foundation Stage)</div>
+                <p class="text-sm text-slate-600 mb-4">Building strong foundational concepts in Mathematics, General Science, English, and Basic Computer Skills across multiple standard syllabi.</p>
+                <ul class="text-xs space-y-2 text-slate-700 list-disc list-inside">
+                    <li>Interactive live problem-solving sessions</li>
+                    <li>Weekly conceptual worksheets</li>
+                    <li>Friendly environment for young learners</li>
+                </ul>
+            </div>
+
+            <div class="bg-white p-6 rounded-xl shadow-md border-t-4 border-amber-500">
+                <div class="text-amber-500 text-xl font-bold mb-2">Grade 7 & 8 (Middle Level)</div>
+                <p class="text-sm text-slate-600 mb-4">Transitioning students toward advanced analytical thinking with deeper focus on Algebra, Geometry, Sciences, and Grammar.</p>
+                <ul class="text-xs space-y-2 text-slate-700 list-disc list-inside">
+                    <li>Multi-curriculum support (Oxford, Dora & others)</li>
+                    <li>Monthly progress tracking tests</li>
+                    <li>Dedicated Q&A sessions</li>
+                </ul>
+            </div>
+
+            <div class="bg-white p-6 rounded-xl shadow-md border-t-4 border-blue-600">
+                <div class="text-blue-600 text-xl font-bold mb-2">Grade 9 & 10 (Matric / O-Levels)</div>
+                <p class="text-sm text-slate-600 mb-4">Rigorous preparation for board exams and O-Level assessments covering Physics, Chemistry, Biology, Mathematics, and Computer Science.</p>
+                <ul class="text-xs space-y-2 text-slate-700 list-disc list-inside">
+                    <li>Past papers practice from previous years</li>
+                    <li>Numerical and chemical equation mastery</li>
+                    <li>Time management techniques for board exams</li>
+                </ul>
+            </div>
+
+            <div class="bg-white p-6 rounded-xl shadow-md border-t-4 border-blue-600">
+                <div class="text-blue-600 text-xl font-bold mb-2">Grade 11 & 12 (F.Sc / ICS / A-Levels)</div>
+                <p class="text-sm text-slate-600 mb-4">Advanced coaching for Pre-Medical, Pre-Engineering, and ICS tracks to secure top positions in intermediate examinations and entry tests.</p>
+                <ul class="text-xs space-y-2 text-slate-700 list-disc list-inside">
+                    <li>In-depth calculus and physics derivations</li>
+                    <li>Organic chemistry concept clearing</li>
+                    <li>University entry test foundation preparation</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- SUBJECTS SECTION -->
+    <section id="subjects" class="bg-slate-100 py-12 px-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-10">
+                <h2 class="text-2xl md:text-3xl font-bold text-blue-900">Comprehensive Subjects Breakdown</h2>
+                <p class="text-slate-600 text-sm mt-1">Everything students need to excel in their academic journey</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-amber-500">
+                    <i class="fa-solid fa-calculator text-3xl text-amber-500 mb-3"></i>
+                    <h3 class="font-bold text-lg text-blue-900">Mathematics</h3>
+                    <p class="text-sm text-slate-600 mt-2">From basic arithmetic to advanced calculus, algebra, and geometry with step-by-step guidance.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-blue-600">
+                    <i class="fa-solid fa-atom text-3xl text-blue-600 mb-3"></i>
+                    <h3 class="font-bold text-lg text-blue-900">Physics</h3>
+                    <p class="text-sm text-slate-600 mt-2">Mastering mechanics, thermodynamics, electricity, and modern physics concepts visually.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-emerald-500">
+                    <i class="fa-solid fa-flask text-3xl text-emerald-500 mb-3"></i>
+                    <h3 class="font-bold text-lg text-blue-900">Chemistry</h3>
+                    <p class="text-sm text-slate-600 mt-2">Inorganic, organic, and physical chemistry made simple with chemical reactions and structures.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-rose-500">
+                    <i class="fa-solid fa-dna text-3xl text-rose-500 mb-3"></i>
+                    <h3 class="font-bold text-lg text-blue-900">Biology</h3>
+                    <p class="text-sm text-slate-600 mt-2">Detailed study of botany, zoology, human physiology, genetics, and cell biology.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-indigo-500">
+                    <i class="fa-solid fa-laptop-code text-3xl text-indigo-500 mb-3"></i>
+                    <h3 class="font-bold text-lg text-blue-900">Computer Science</h3>
+                    <p class="text-sm text-slate-600 mt-2">Programming fundamentals, database management, and information technology concepts.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-purple-500">
+                    <i class="fa-solid fa-book-open text-3xl text-purple-500 mb-3"></i>
+                    <h3 class="font-bold text-lg text-blue-900">English Language & Literature</h3>
+                    <p class="text-sm text-slate-600 mt-2">Grammar improvement, essay summary, comprehension, and literature analysis.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INSTRUCTOR / MANAGEMENT SECTION -->
+    <section id="instructor" class="py-12 px-4 max-w-7xl mx-auto">
+        <div class="bg-blue-900 text-white rounded-3xl p-8 md:p-12 shadow-xl flex flex-col md:flex-row items-center gap-8">
+            <div class="w-36 h-36 md:w-48 md:h-48 rounded-full border-4 border-amber-400 overflow-hidden flex-shrink-0 shadow-lg bg-blue-950 flex items-center justify-center">
+                <i class="fa-solid fa-user-tie text-6xl text-amber-400"></i>
+            </div>
+            <div class="space-y-3 text-center md:text-left">
+                <span class="bg-amber-500 text-blue-950 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Management Lead & Instructor</span>
+                <h2 class="text-2xl md:text-3xl font-extrabold text-white">Expert Academic Leadership</h2>
+                <p class="text-blue-100 text-sm md:text-base leading-relaxed">
+                    At EduZeno Online Learning Platform, we believe that quality education stems from strong conceptual foundations and expert guidance. Our mathematics and science mentoring programs are structured to clear complex queries, build logical thinking, and prepare students for academic excellence across multiple curricula (including Oxford, Dora, and more).
+                </p>
+                <div class="pt-2 flex flex-wrap justify-center md:justify-start gap-4 text-xs font-semibold text-amber-300">
+                    <span><i class="fa-solid fa-check-circle"></i> Concept-Driven Learning</span>
+                    <span><i class="fa-solid fa-check-circle"></i> Interactive Online Teaching</span>
+                    <span><i class="fa-solid fa-check-circle"></i> Personalized Mentorship</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STUDY MATERIAL & RESOURCES SECTION -->
+    <section id="material" class="py-12 px-4 max-w-7xl mx-auto bg-slate-100 rounded-3xl my-6">
+        <div class="text-center mb-10">
+            <h2 class="text-2xl md:text-3xl font-bold text-blue-900">Study Material & Curriculum Resources</h2>
+            <p class="text-slate-600 text-sm mt-1">Request secure access to notes, key books, and exam prep files</p>
+        </div>
+
+        <div class="max-w-2xl mx-auto bg-white p-8 rounded-2xl shadow-xl border border-slate-100">
+            <div class="text-center mb-6">
+                <h3 class="text-xl font-bold text-blue-900">Request Resource Access</h3>
+                <p class="text-slate-600 text-xs mt-1">Fill out this form to send an access request directly to <span class="font-semibold text-blue-900">infoeduzeno@gmail.com</span>.</p>
+            </div>
+
+            <form action="https://formspree.io/f/mkjwjvpr" method="POST" class="space-y-4">
+                <div>
+                    <label class="block font-semibold text-xs mb-1">Student Full Name</label>
+                    <input type="text" name="name" required placeholder="Enter your full name" class="w-full border border-slate-300 p-2.5 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 text-sm">
+                </div>
+
+                <div>
+                    <label class="block font-semibold text-xs mb-1">Your Email Address</label>
+                    <input type="email" name="email" required placeholder="your.email@example.com" class="w-full border border-slate-300 p-2.5 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 text-sm">
+                </div>
+
+                <div>
+                    <label class="block font-semibold text-xs mb-1">Select Material Needed</label>
+                    <select name="material" required class="w-full border border-slate-300 p-2.5 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 text-sm">
+                        <option value="">Choose Material Type</option>
+                        <option value="Past Papers">Past Papers (All Boards)</option>
+                        <option value="Oxford Key Books">Oxford Key Books & Handouts</option>
+                        <option value="Dora Syllabus Notes">Dora Syllabus Notes</option>
+                        <option value="Practice Worksheets">Practice Worksheets</option>
+                        <option value="Chapter-wise Notes">Chapter-wise Notes</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block font-semibold text-xs mb-1">Message / Note</label>
+                    <textarea name="message" rows="2" placeholder="Mention your grade or specific requirements..." class="w-full border border-slate-300 p-2.5 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 text-sm"></textarea>
+                </div>
+
+                <button type="submit" class="w-full bg-blue-900 hover:bg-blue-800 text-white font-bold py-3 rounded-lg shadow-md transition text-sm">
+                    Send Access Request via Email
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FAQ SECTION -->
+    <section id="faq" class="py-12 px-4 max-w-4xl mx-auto">
+        <div class="text-center mb-10">
+            <h2 class="text-2xl md:text-3xl font-bold text-blue-900">Frequently Asked Questions</h2>
+            <p class="text-slate-600 text-sm mt-1">Got questions? We have got answers.</p>
+        </div>
+
+        <div class="space-y-4">
+            <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+                <button onclick="toggleFAQ(this)" class="w-full p-4 text-left font-bold text-blue-900 flex justify-between items-center focus:outline-none">
+                    <span>How are the online classes conducted at EduZeno?</span>
+                    <i class="fa-solid fa-chevron-down faq-icon transition-transform"></i>
+                </button>
+                <div class="hidden p-4 pt-0 text-sm text-slate-600 border-t border-slate-100">
+                    Classes are conducted online through live interactive sessions utilizing digital whiteboards, screen sharing, and regular Q&A to ensure complete student engagement.
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+                <button onclick="toggleFAQ(this)" class="w-full p-4 text-left font-bold text-blue-900 flex justify-between items-center focus:outline-none">
+                    <span>Which curricula or syllabi do you cover?</span>
+                    <i class="fa-solid fa-chevron-down faq-icon transition-transform"></i>
+                </button>
+                <div class="hidden p-4 pt-0 text-sm text-slate-600 border-t border-slate-100">
+                    We offer multi-curriculum preparation including Oxford syllabi, Dora syllabus, Matriculation, O-Levels, F.Sc, and ICS standards.
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+                <button onclick="toggleFAQ(this)" class="w-full p-4 text-left font-bold text-blue-900 flex justify-between items-center focus:outline-none">
+                    <span>Can I book a free demo class before enrolling?</span>
+                    <i class="fa-solid fa-chevron-down faq-icon transition-transform"></i>
+                </button>
+                <div class="hidden p-4 pt-0 text-sm text-slate-600 border-t border-slate-100">
+                    Yes! You can easily book a free demo session by filling out our enrollment form below and specifying your preferred grade and subject.
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+                <button onclick="toggleFAQ(this)" class="w-full p-4 text-left font-bold text-blue-900 flex justify-between items-center focus:outline-none">
+                    <span>How do I receive study materials and notes?</span>
+                    <i class="fa-solid fa-chevron-down faq-icon transition-transform"></i>
+                </button>
+                <div class="hidden p-4 pt-0 text-sm text-slate-600 border-t border-slate-100">
+                    You can use the Study Material request form on our website. Once submitted, our team will send the requested notes and resources directly to your email.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SUCCESS STORIES / TESTIMONIALS & FEEDBACK SUBMISSION -->
+    <section id="feedback" class="py-12 px-4 max-w-7xl mx-auto">
+        <div class="text-center mb-10">
+            <h2 class="text-2xl md:text-3xl font-bold text-blue-900">What Students & Parents Say</h2>
+            <p class="text-slate-600 text-sm mt-1">Real experiences from our community members</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+            <div class="bg-white p-6 rounded-xl shadow-md border border-slate-100 relative">
+                <div class="text-amber-400 text-sm mb-2">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <p class="text-xs text-slate-600 italic mb-4">"EduZeno's online math sessions completely cleared my daughter's concepts in algebra. The individual attention is remarkable!"</p>
+                <div class="font-bold text-sm text-blue-900">- Mrs. Tariq, Parent (Grade 8)</div>
+            </div>
+
+            <div class="bg-white p-6 rounded-xl shadow-md border border-slate-100 relative">
+                <div class="text-amber-400 text-sm mb-2">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <p class="text-xs text-slate-600 italic mb-4">"The physics and chemistry problem-solving techniques taught here helped me secure an A* in my O-Levels. Highly recommended!"</p>
+                <div class="font-bold text-sm text-blue-900">- Hamza Khan, Student (Grade 10)</div>
+            </div>
+
+            <div class="bg-white p-6 rounded-xl shadow-md border border-slate-100 relative">
+                <div class="text-amber-400 text-sm mb-2">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <p class="text-xs text-slate-600 italic mb-4">"Very structured multi-curriculum support. The practice worksheets and past papers make exam preparation completely stress-free."</p>
+                <div class="font-bold text-sm text-blue-900">- Dr. Ayesha, Parent (Grade 11)</div>
+            </div>
+        </div>
+
+        <!-- LEAVE A FEEDBACK FORM -->
+        <div class="max-w-2xl mx-auto bg-white p-8 rounded-2xl shadow-md border border-slate-200">
+            <div class="text-center mb-6">
+                <h3 class="text-xl font-bold text-blue-900">Share Your Feedback / Review</h3>
+                <p class="text-slate-600 text-xs mt-1">We value your thoughts! Submit your review to let us know about your experience.</p>
+            </div>
+
+            <form action="https://formspree.io/f/mkjwjvpr" method="POST" class="space-y-4">
+                <div>
+                    <label class="block font-semibold text-xs mb-1">Your Name & Designation (e.g. Student / Parent)</label>
+                    <input type="text" name="reviewer_name" required placeholder="e.g. Ali Ahmed (Grade 9 Student)" class="w-full border border-slate-300 p-2.5 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 text-sm">
+                </div>
+
+                <div>
+                    <label class="block font-semibold text-xs mb-1">Rating</label>
+                    <select name="rating" required class="w-full border border-slate-300 p-2.5 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 text-sm">
+                        <option value="5 Stars - Excellent">5 Stars - Excellent (5/5)</option>
+                        <option value="4 Stars - Very Good">4 Stars - Very Good (4/5)</option>
+                        <option value="3 Stars - Good">3 Stars - Good (3/5)</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block font-semibold text-xs mb-1">Your Review / Comments</label>
+                    <textarea name="feedback_message" rows="3" required placeholder="Write your feedback here..." class="w-full border border-slate-300 p-2.5 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 text-sm"></textarea>
+                </div>
+
+                <button type="submit" class="w-full bg-amber-500 hover:bg-amber-600 text-blue-950 font-bold py-3 rounded-lg shadow-md transition text-sm">
+                    Submit Feedback
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- REGISTRATION FORM -->
+    <section id="register" class="bg-blue-900 text-white py-12 px-4">
+        <div class="max-w-3xl mx-auto bg-white text-slate-800 p-6 md:p-8 rounded-2xl shadow-2xl">
+            <div class="text-center mb-8">
+                <h2 class="text-2xl md:text-3xl font-bold text-blue-900">Enroll in EduZeno</h2>
+                <p class="text-slate-600 text-sm mt-1">Fill out the form below to book a free demo class or enroll</p>
+            </div>
+
+            <form action="https://formspree.io/f/mkjwjvpr" method="POST" class="space-y-4">
+                <div>
+                    <label class="block font-semibold text-sm mb-1">Student Full Name</label>
+                    <input type="text" name="name" required placeholder="e.g. Ali Ahmed" class="w-full border border-slate-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 text-sm">
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block font-semibold text-sm mb-1">Select Grade / Class</label>
+                        <select name="grade" required class="w-full border border-slate-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 text-sm">
+                            <option value="">Choose Grade</option>
+                            <option value="Grade 5">Grade 5</option>
+                            <option value="Grade 6">Grade 6</option>
+                            <option value="Grade 7">Grade 7</option>
+                            <option value="Grade 8">Grade 8</option>
+                            <option value="Grade 9">Grade 9</option>
+                            <option value="Grade 10">Grade 10</option>
+                            <option value="Grade 11">Grade 11 (First Year)</option>
+                            <option value="Grade 12">Grade 12 (Second Year)</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block font-semibold text-sm mb-1">Preferred Subject</label>
+                        <select name="subject" id="subject-select" onchange="handleSubjectChange(this)" required class="w-full border border-slate-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 text-sm">
+                            <option value="">Choose Subject</option>
+                            <option value="Mathematics">Mathematics</option>
+                            <option value="Physics">Physics</option>
+                            <option value="Chemistry">Chemistry</option>
+                            <option value="Biology">Biology</option>
+                            <option value="Computer Science">Computer Science</option>
+                            <option value="English Language">English Language</option>
+                            <option value="Other">Other (Type below)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- OTHER SUBJECT COMMENT BOX (HIDDEN BY DEFAULT) -->
+                <div id="other-subject-div" class="hidden">
+                    <label class="block font-semibold text-sm mb-1 text-blue-900">Please specify your subject or requirements:</label>
+                    <input type="text" name="other_subject_details" placeholder="Type custom subject name..." class="w-full border border-slate-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 text-sm">
+                </div>
+
+                <div>
+                    <label class="block font-semibold text-sm mb-1">Email Address / Contact Details</label>
+                    <input type="email" name="contact_email" required placeholder="your.email@example.com" class="w-full border border-slate-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 text-sm">
+                </div>
+
+                <div>
+                    <label class="block font-semibold text-sm mb-1">Additional Message / Query (Optional)</label>
+                    <textarea name="message" rows="3" placeholder="Any specific learning goals or questions..." class="w-full border border-slate-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 text-sm"></textarea>
+                </div>
+
+                <button type="submit" class="w-full bg-amber-500 hover:bg-amber-600 text-blue-950 font-bold py-3 rounded-lg shadow-md transition text-base">
+                    Submit Enrollment / Book Demo
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-blue-950 text-slate-300 py-8 px-4 border-t border-blue-900 text-center">
+        <div class="max-w-7xl mx-auto space-y-4">
+            <div class="flex justify-center items-center space-x-3">
+                <img src="https://i.postimg.cc/gjDKQNL3/Whats-App-Image-2026-08-09-at-1-20-24-PM.jpg" alt="EduZeno Logo" class="h-10 w-10 rounded-full object-cover border border-amber-400">
+                <span class="text-xl font-bold text-amber-400">EduZeno Academy</span>
+            </div>
+            <p class="text-xs text-slate-400 max-w-md mx-auto">Empowering students from Grade 5 to Grade 12 with concept-driven online education and expert mentorship.</p>
+            <div class="flex justify-center space-x-4 text-lg">
+                <a href="https://whatsapp.com/channel/0029VbDRvi9Id7nE9dPlaF2V" target="_blank" class="text-green-400 hover:text-green-300 transition" title="WhatsApp Channel"><i class="fa-brands fa-whatsapp"></i></a>
+                <a href="mailto:infoeduzeno@gmail.com" class="text-amber-400 hover:text-amber-300 transition" title="Email Us"><i class="fa-solid fa-envelope"></i></a>
+            </div>
+            <div class="text-xs text-slate-500 pt-4 border-t border-blue-900/50">
+                &copy; 2026 EduZeno Online Learning Platform. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
